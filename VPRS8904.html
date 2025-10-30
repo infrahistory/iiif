@@ -153,7 +153,13 @@
     }
 
     function highlightText(text, query) {
-        const regex = new RegExp(`(${query})`, 'gi');
+        if (!query) return text;
+
+        if (text.indexOf('<') !== -1 && text.indexOf('>') !== -1) {
+            return text;
+        }
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escapedQuery})`, 'gi');
         return text.replace(regex, '<mark>$1</mark>');
     }
 
