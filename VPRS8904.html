@@ -125,7 +125,11 @@
 
             const descriptionElement = document.createElement('div');
             descriptionElement.className = 'description';
-            descriptionElement.innerHTML = `<strong>Description:</strong> ${highlightedDescription.replace(/\r\n|\r|\n/g, '<br>')}`;
+            let safeDescription = highlightedDescription.trim();
+            if (safeDescription.indexOf('<') === -1 && safeDescription.indexOf('>') === -1) {
+                safeDescription = safeDescription.replace(/\r\n|\r|\n/g, '<br>');
+            }
+            descriptionElement.innerHTML = `<strong>Description:</strong> ${safeDescription}`;
 
             div.appendChild(titleElement);
             div.appendChild(descriptionElement);
