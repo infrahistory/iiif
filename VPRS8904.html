@@ -125,7 +125,7 @@
 
             const descriptionElement = document.createElement('div');
             descriptionElement.className = 'description';
-            descriptionElement.innerHTML = `<strong>Description:</strong> ${highlightedDescription.replace(/\n/g, '<br>')}`;
+            descriptionElement.innerHTML = `<strong>Description:</strong><br> ${highlightedDescription.replace(/\n/g, '<br>')}`;
 
             div.appendChild(titleElement);
             div.appendChild(descriptionElement);
@@ -144,6 +144,9 @@
                 targetLinkElement.innerHTML = `<a href="#" onClick="viewer.activateCanvas('${result.targetCanvasLink}')" >Go to</a>`;
                 div.appendChild(targetLinkElement);
             }
+
+            const ruleElement = document.createElement('hr');
+            div.appendChild(ruleElement);
 
             resultsContainer.appendChild(div);
         });
